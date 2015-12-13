@@ -35,7 +35,8 @@ public class PlanFragment extends Fragment {
         btAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                        }
+
+            }
         });
         btADD_plan.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -4,10 +4,10 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/plan"
-            android:title="일정"/>
+            android:title="일정수정"/>
         <item
             android:id="@+id/circles"
-            android:title="동아리"/>
+            android:title="동아리수정"/>
     </group>
 
 
