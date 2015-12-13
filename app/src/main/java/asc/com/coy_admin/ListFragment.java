@@ -10,6 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.Toast;
+
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,14 +42,36 @@ public class ListFragment extends Fragment {
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(layoutManager);
 
-        List<List_item> items=new ArrayList<>();
+        final List<List_item> items=new ArrayList<>();
         List_item[] item=new List_item[5];
+
+        ParseQuery<ParseObject> query=new ParseQuery<>("club");
+        query.addAscendingOrder("Club_name");
+        query.findInBackground(new FindCallback<ParseObject>() {
+            @Override
+            public void done(List<ParseObject> list, ParseException e) {
+                if( e!= null) {
+                    Toast.makeText(getActivity().getApplicationContext(), "error", Toast.LENGTH_SHORT).show();
+                } else {
+                    for (ParseObject o : list) {
+                        List_item item = new List_item(o.getString("Club_name"));
+                        items.add(item);
+                        Log.d("ddd", item.getTitle());
+                    }
+                }
+                mRecyclerView.setAdapter(new RecyclerAdapter(getActivity().getApplicationContext(),items));
+            }
+
+        });
+        /*
         for(List_item i:item) {
             i = new List_item("aasdfghjklZxcvbnmsc");
             items.add(i);
             Log.d("ddd",i.getTitle());
         }
-        mRecyclerView.setAdapter(new RecyclerAdapter(getActivity().getApplicationContext(),items));
+        */
+        //mRecyclerView.setAdapter(new RecyclerAdapter(getActivity().getApplicationContext(),items));
+
         return cur_layout;
     }
 

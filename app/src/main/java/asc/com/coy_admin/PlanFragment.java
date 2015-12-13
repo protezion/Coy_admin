@@ -10,18 +10,20 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+import com.parse.ParseObject;
+
 
 /**
  * Created by THE KWON on 2015-12-12.
  */
+
 public class PlanFragment extends Fragment {
     LinearLayout cur_layout;
+    ParseObject tempObject = new ParseObject("Plan");
 
-    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -43,7 +45,11 @@ public class PlanFragment extends Fragment {
             public void onClick(View v) {
                 Toast.makeText(getActivity().getApplicationContext(),
                         editclub.getText()+", " + editdetail.getText()+", "+editplan.getText(),Toast.LENGTH_SHORT).show();
+                tempObject.put("Title", editplan.getText().toString());
+                tempObject.put("club", editclub.getText().toString());
+                tempObject.put("Detail", editdetail.getText().toString());
 
+                tempObject.saveInBackground();
             }
         });
 

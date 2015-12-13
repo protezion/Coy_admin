@@ -15,10 +15,13 @@ public class Coy_admin extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        Parse.enableLocalDatastore(this);
         Parse.initialize(this, APPLICATION_ID, CLIENT_KEY);
         ParseACL defaultACL=new ParseACL();
         defaultACL.setPublicReadAccess(true);
         defaultACL.setPublicWriteAccess(true);
-        ParseACL.setDefaultACL(defaultACL,true);
+        ParseACL.setDefaultACL(defaultACL, true);
+        //ParseObject.registerSubclass();
+
     }
 }
