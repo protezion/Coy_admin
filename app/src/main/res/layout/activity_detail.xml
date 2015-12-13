@@ -7,15 +7,23 @@
         layout="@layout/app_bar_main"
         android:id="@+id/titlebar"/>
     <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="15dp">
+        <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp">
 
         <TextView
+            android:textSize="18dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="분과 : "/>
         <TextView
+            android:textSize="18dp"
             android:id="@+id/textSub"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
@@ -23,8 +31,11 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp">
         <TextView
+            android:layout_gravity="center"
+            android:textSize="18dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="포스터 : "/>
@@ -32,17 +43,23 @@
             android:id="@+id/btImg"
             android:text="Add"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="40dp"/>
     </LinearLayout>
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp">
         <TextView
+
+            android:textSize="18dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="상세 내용 : "/>
+            android:text="상세 내용 : "
+/>
         <TextView
+
+            android:textSize="18dp"
             android:id="@+id/textDetail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
@@ -50,12 +67,16 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp">
         <TextView
+
+            android:textSize="18dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="회장 : "/>
         <EditText
+            android:textSize="18dp"
             android:id="@+id/editLeader"
             android:layout_width="100dp"
             android:layout_height="wrap_content"/>
@@ -63,12 +84,16 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+
+        android:layout_marginBottom="10dp">
         <TextView
+            android:textSize="18dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="장소 : "/>
         <TextView
+            android:textSize="18dp"
             android:id="@+id/textLocation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
@@ -76,14 +101,19 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp">
         <TextView
+            android:textSize="18dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="전화번호 : "/>
         <TextView
+            android:textSize="18dp"
             android:id="@+id/textPhone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     </LinearLayout>
+    </LinearLayout>
+
 </LinearLayout>

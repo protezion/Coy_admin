@@ -30,12 +30,19 @@ public class PlanFragment extends Fragment {
         final EditText editdetail=(EditText)cur_layout.findViewById(R.id.editdetail);
         final EditText editplan=(EditText)cur_layout.findViewById(R.id.editplan);
         Button btAdd=(Button)cur_layout.findViewById(R.id.btAdd);
+        Button btADD_plan=(Button)cur_layout.findViewById(R.id.addplan);
 
         btAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                        }
+        });
+        btADD_plan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 Toast.makeText(getActivity().getApplicationContext(),
                         editclub.getText()+", " + editdetail.getText()+", "+editplan.getText(),Toast.LENGTH_SHORT).show();
+
             }
         });
 
