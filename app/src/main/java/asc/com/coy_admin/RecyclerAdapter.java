@@ -7,7 +7,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.List;
@@ -33,16 +32,23 @@ public class RecyclerAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        List_item item=items.get(position);
+        final List_item item = items.get(position);
                 ((Item) holder).container.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(mContext, DetailActivity.class);
+                intent.putExtra("tgObjectId", item.getObjectId());
+                intent.putExtra("tgClubIntro", item.getClubIntro());
+                intent.putExtra("tgClubLeader", item.getClubLeader());
+                intent.putExtra("tgClubLotate", item.getClubLotate());
+                intent.putExtra("tgClubName", item.getClubName());
+                intent.putExtra("tgClubPhone", item.getClubPhone());
+                intent.putExtra("tgClubSub", item.getClubSub());
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 mContext.startActivity(intent);
             }
         });
-        ((Item)holder).text.setText(item.getTitle());
+        ((Item)holder).text.setText(item.getClubName());
     }
 
     @Override

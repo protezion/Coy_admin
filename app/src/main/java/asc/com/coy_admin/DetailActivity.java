@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.parse.GetCallback;
 import com.parse.ParseException;
@@ -17,6 +18,7 @@ import com.parse.ParseQuery;
 /**
  * Created by THE KWON on 2015-12-12.
  */
+
 public class DetailActivity extends AppCompatActivity {
 
     Intent intent;
@@ -63,14 +65,17 @@ public class DetailActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId() == R.id.action_ok) {
             ParseQuery<ParseObject> parseObject = ParseQuery.getQuery("club");
-            parseObject.getInBackground(getIntent().getStringExtra("tgObjectId"), new GetCallback<ParseObject>() {
+            parseObject.whereEqualTo("objectId", getIntent().getStringExtra("tgObjectId"));
+            parseObject.getFirstInBackground(new GetCallback<ParseObject>() {
                 @Override
                 public void done(ParseObject parseObject, ParseException e) {
-                    parseObject.put("Club_intro", textIntro);
-                    parseObject.put("Club_leader", editLeader);
-                    parseObject.put("Club_phone", textPhone);
-                    parseObject.put("Club_sub", textSub);
+                    parseObject.put("Club_intro", textIntro.getText().toString());
+                    parseObject.put("Club_leader", editLeader.getText().toString());
+                    parseObject.put("Club_phone", textPhone.getText().toString());
+                    parseObject.put("Club_sub", textSub.getText().toString());
                     parseObject.saveInBackground();
+                    Toast.makeText(DetailActivity.this, "Finish!", Toast.LENGTH_SHORT).show();
+                    finish();
                 }
             });
             }

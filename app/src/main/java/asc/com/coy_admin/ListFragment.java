@@ -5,7 +5,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,23 +53,16 @@ public class ListFragment extends Fragment {
                     Toast.makeText(getActivity().getApplicationContext(), "error", Toast.LENGTH_SHORT).show();
                 } else {
                     for (ParseObject o : list) {
-                        List_item item = new List_item(o.getString("Club_name"));
+                        List_item item = new List_item(o.getObjectId(), o.getString("Club_intro"),
+                                o.getString("Club_leader"), o.getString("Club_lotate"), o.getString("Club_name"),
+                                o.getString("Club_phone"), o.getString("Club_sub"));
                         items.add(item);
-                        Log.d("ddd", item.getTitle());
                     }
                 }
                 mRecyclerView.setAdapter(new RecyclerAdapter(getActivity().getApplicationContext(),items));
             }
 
         });
-        /*
-        for(List_item i:item) {
-            i = new List_item("aasdfghjklZxcvbnmsc");
-            items.add(i);
-            Log.d("ddd",i.getTitle());
-        }
-        */
-        //mRecyclerView.setAdapter(new RecyclerAdapter(getActivity().getApplicationContext(),items));
 
         return cur_layout;
     }
