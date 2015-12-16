@@ -31,6 +31,7 @@ public class PlanFragment extends Fragment {
     int cur_mon;
     int cur_day;
     TextView text_date;
+    String date;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,11 +58,11 @@ public class PlanFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getActivity().getApplicationContext(),
-                        editclub.getText()+", " + editdetail.getText()+", "+editplan.getText(),Toast.LENGTH_SHORT).show();
+                        editclub.getText()+", " + editdetail.getText()+", "+editplan.getText()+date,Toast.LENGTH_SHORT).show();
                 tempObject.put("Title", editplan.getText().toString());
                 tempObject.put("club", editclub.getText().toString());
                 tempObject.put("Detail", editdetail.getText().toString());
-
+                tempObject.put("date",date);
                 tempObject.saveInBackground();
             }
         });
@@ -76,11 +77,12 @@ public class PlanFragment extends Fragment {
                 Dialog date_picker=new DatePickerDialog(getActivity(),new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                        text_date.setText(""+cur_year+"."+(cur_mon + 1)+"."+ cur_day);
+                        monthOfYear=monthOfYear+1;
+                        text_date.setText(""+year+"."+monthOfYear+"."+ dayOfMonth);
+                        date=year+"."+monthOfYear+"."+dayOfMonth;
                     }
                 },cur_year,cur_mon,cur_day);
                 date_picker.show();
-
             }
         });
         return cur_layout;
